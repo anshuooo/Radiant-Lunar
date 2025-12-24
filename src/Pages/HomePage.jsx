@@ -282,6 +282,71 @@ const HomePage = () => {
           </div>
         </section>
 
+        {/* Testimonial Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Trusted by Leading Corporate Brands</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Delivering premium customized corporate merchandise with trust & quality.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  id: 1,
+                  name: "Rajesh Kumar",
+                  role: "Marketing Director, TechFlow",
+                  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+                  text: "Radiant Lunar delivered exceptional quality customized products for our corporate event. The branding, packaging, and delivery were absolutely flawless."
+                },
+                {
+                  id: 2,
+                  name: "Priya Sharma",
+                  role: "HR Manager, Innovate Inc",
+                  image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+                  text: "Highly professional team with premium product quality. Our employees loved the customized bottles and apparel."
+                },
+                {
+                  id: 3,
+                  name: "Amit Patel",
+                  role: "Operations Head, GlobalSol",
+                  image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+                  text: "Best corporate gifting partner we have worked with. Smooth process, great communication, and premium results."
+                }
+              ].map((testimonial) => (
+                <motion.div
+                  key={testimonial.id}
+                  className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-1 transition-transform duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: testimonial.id * 0.1 }}
+                >
+                  <div className="flex items-center mb-6">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-gray-100"
+                    />
+                    <div>
+                      <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-500">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <div className="flex mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <FiStar key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-600 italic leading-relaxed">"{testimonial.text}"</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

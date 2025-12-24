@@ -41,7 +41,7 @@ const Navbar = () => {
               <div className="w-10 h-10 bg-[#1E3A8A] rounded-lg flex items-center justify-center text-white font-bold text-xl">
                 R
               </div>
-              <span className="ml-3 text-xl font-semibold text-gray-900">Randiyantlunar</span>
+              <span className="ml-3 text-xl font-semibold text-gray-900">Radiantlunar</span>
             </a>
           </div>
 

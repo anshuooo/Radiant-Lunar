@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiPlus, FiShoppingBag, FiTruck, FiShield, FiAward } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import { FaApple, FaMicrosoft } from 'react-icons/fa';
 import { SiSamsung, SiPuma, SiAmericanexpress, SiVisa, SiAdidas, SiNike } from 'react-icons/si';
 import { BsSunglasses } from 'react-icons/bs';
@@ -101,6 +102,94 @@ const products = [
       '6-panel design with matching color fabric under visor',
       'Custom embroidery ready'
     ]
+  },
+  {
+    id: 5,
+    name: 'Premium Joining Kit',
+    description: 'Complete welcome package for new team members',
+    category: 'Corporate',
+    price: 199,
+    originalPrice: 250,
+    discount: 20,
+    rating: 4.8,
+    reviewCount: 189,
+    colors: ['Black', 'Navy', 'Gray'],
+    sizes: ['Standard'],
+    image: '/src/assets/joiningkit.png',
+    details: [
+      'Includes branded notebook and pen',
+      'Company handbook and guidelines',
+      'Personalized welcome letter',
+      'Access card and lanyard',
+      'Company merchandise',
+      'Digital welcome package'
+    ]
+  },
+  {
+    id: 6,
+    name: 'Adidas Ultraboost 21',
+    description: 'Running shoes with responsive cushioning and energy return',
+    category: 'Footwear',
+    price: 180,
+    originalPrice: 200,
+    discount: 10,
+    rating: 4.8,
+    reviewCount: 342,
+    colors: ['Black', 'White', 'Red', 'Blue'],
+    sizes: ['US 7', 'US 8', 'US 9', 'US 10', 'US 11', 'US 12'],
+    image: 'src/assets/adidas.png',
+    details: [
+      'Responsive Boost midsole for energy return',
+      'Primeknit+ material for adaptive fit',
+      'Stretchweb outsole flexes naturally',
+      'Continental™ Rubber outsole for traction',
+      'Sock-like fit for comfort',
+      'Lace closure for secure fit'
+    ]
+  },
+  {
+    id: 7,
+    name: 'Puma Apparel',
+    description: 'Chunky sneakers with bold design and superior comfort',
+    category: 'Lifestyle',
+    price: 110,
+    originalPrice: 130,
+    discount: 15,
+    rating: 4.7,
+    reviewCount: 289,
+    colors: ['Black/Red', 'White/Blue', 'Gray/Orange', 'Black/White'],
+    sizes: ['US 7', 'US 8', 'US 9', 'US 10', 'US 11'],
+    image: 'pumaapparel.jpg',
+    details: [
+      'Chunky, retro-inspired design',
+      'Cushioned footbed for all-day comfort',
+      'Textile and synthetic upper',
+      'Rubber outsole for traction',
+      'Padded collar for ankle support',
+      'Signature PUMA Formstrip branding'
+    ]
+  },
+  {
+    id: 8,
+    name: 'Premium Leather Diary',
+    description: 'Elegant leather-bound diary for your personal and professional needs',
+    category: 'Stationery',
+    price: 45,
+    originalPrice: 60,
+    discount: 25,
+    rating: 4.9,
+    reviewCount: 198,
+    colors: ['Black', 'Brown', 'Blue', 'Red'],
+    sizes: ['A5', 'B5', 'A4'],
+    image: '/diary.png',
+    details: [
+      'Genuine leather cover',
+      '200 ruled pages',
+      'Ribbon bookmark',
+      'Elastic closure band',
+      'Inner pocket for loose sheets',
+      'Ideal for journaling and note-taking'
+    ]
   }
 ];
 
@@ -117,6 +206,7 @@ const brandLogos = [
 ];
 
 const ProductsPage = () => {
+  const navigate = useNavigate();
   const brandContainerRef = useRef(null);
   const brandLogosRef = useRef([]);
   const [quantities, setQuantities] = useState({});
@@ -309,6 +399,18 @@ const ProductsPage = () => {
                           {(quantities[product.id] || 50).toLocaleString('en-IN')} pcs
                         </span>
                       </div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate('/puma');
+                          }}
+                          className="flex-1 bg-gray-900 text-white py-2 px-3 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+                        >
+                          <FiShoppingBag className="h-4 w-4" />
+                          More Products
+                        </button>
+                      </div>
                       <div className="flex items-center gap-2">
                         <button
                           type="button"
@@ -349,18 +451,6 @@ const ProductsPage = () => {
                         </button>
                       </div>
                     </div>
-
-                    <button
-                      className="w-full py-3 px-4 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // Handle add to cart with quantity
-                        const quantity = quantities[product.id] || 50;
-                        console.log(`Added ${quantity} of ${product.name} to cart`);
-                      }}
-                    >
-                      Add to Cart - ₹{(product.price * (quantities[product.id] || 50) / 100).toFixed(2)}
-                    </button>
                   </div>
                 </div>
 
